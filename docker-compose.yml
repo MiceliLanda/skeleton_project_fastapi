@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      - DB_HOST=db
+      - DB_USER=your-db-user
+      - DB_PASSWORD=your-db-password
+      - DB_NAME=your-db-name
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0.23
+    environment:
+      MYSQL_ROOT_PASSWORD: your-root-password
+      MYSQL_DATABASE: your-db-name
+      MYSQL_USER: your-db-user
+      MYSQL_PASSWORD: your-db-password
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    healthcheck:
+      interval: 5s
+      timeout: 20s
+      retries: 10
+    command: --default-authentication-plugin=mysql_native_password --lower_case_table_names=1
+
+volumes:
+  mysql_data:
