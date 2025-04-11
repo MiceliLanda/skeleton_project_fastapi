@@ -71,7 +71,7 @@ from dotenv import load_dotenv
 load_dotenv()
 ```
 - Debe estar al inicio del archivo, antes de usar `os.getenv()`.
--  **Configuración:** Debajo de la variable config agregar esta linea de código para vincular la configuración de la url de la db: 
+-  **Configuración:** Antes de la variable config agregar estas lineas de código para vincular la configuración de la url de conexión a nuestra db y mapear a la configuración de alembic con `set_main_option`
 ```Python
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
