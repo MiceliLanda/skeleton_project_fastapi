@@ -25,7 +25,7 @@ deactivate
 ### Instalación de dependencias
 - **Dependencias**: Asegúrate de tener todas las dependencias necesarias instaladas antes de correr el proyecto. Puedes hacerlo ejecutando:
 ```bash
-pip install -r requirements.txt`
+pip install -r requirements.txt
 ```
 
 ## Variables de Entorno
