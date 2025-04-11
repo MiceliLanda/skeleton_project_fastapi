@@ -3,7 +3,7 @@ from pymysql import IntegrityError
 from sqlalchemy.orm import Session
 from models import User, UserCredentials
 from schemas import UserCreate
-from schemas import LoginRequest, Token,UserListResponse
+from schemas import LoginRequest, Token
 from provider import authorization
 
 def create_user(db: Session, user_data : UserCreate):

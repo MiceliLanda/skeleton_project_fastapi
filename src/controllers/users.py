@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import Depends,APIRouter, HTTPException,status
-from schemas import LoginRequest, Token, UserCreate,UserAddPermissions, UserLoginResponse, User, PermissionsResponse
+from schemas import LoginRequest, Token, UserCreate,UserAddPermissions, UserLoginResponse, PermissionsResponse
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from database.db import get_db
@@ -31,7 +31,7 @@ def login(login_data: LoginRequest, db: Session = Depends(get_db)) -> UserLoginR
         
     
 @router.post('/create')
-def new_user(user_data: UserCreate, db : Session = Depends(get_db)) -> User:
+def new_user(user_data: UserCreate, db : Session = Depends(get_db)) -> UserLoginResponse:
     try:
         return create_user(db, user_data)
     except Exception as e:
